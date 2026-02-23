@@ -1,0 +1,22 @@
++Aşama 1: Main ve Parser Güncellemesi (Flag Avcısı): 
+	main fonksiyonuna gelen argv argümanlarını tarayıp --simple, --medium, --complex, --adaptive ve --bench 
+	flag'lerinden birinin girilip girilmediğini tespit eden bir yapı kuracağız.
+ 
++Aşama 2: Disorder (Düzensizlik) Hesaplayıcı:
+	PDF'in bize verdiği o formülü C koduna dökerek, sıralamaya başlamadan hemen önce listemizin ne kadar 
+	karışık (0.0 ile 1.0 arası bir değer) olduğunu hesaplayan o matematiksel fonksiyonu yazacağız.
+
+Aşama 3: Algoritma 1 (Simple):
+	Düşük karışıklık durumları (ve az sayıda elemanlar) için temel sıralama mantığımızı kuracağız.
+	(Daha önce konuştuğumuz o sort_three mantığı bu dosyanın içine çok güzel yakışacak).
+ 
+Aşama 4: Algoritma 2 (Medium):
+	Orta seviye karışıklıklar için, elemanları bloklara/parçalara bölen (Chunk) mantığı kurgulayacağız.
+
+Aşama 5: Algoritma 3 (Complex): 
+	Yüksek karışıklık durumları ve büyük veri setleri (100-500 sayı) için projenin ağır topu olan 
+	O(nlog n) algoritmamızı yazacağız.
+
+Aşama 6: Benchmark ve Raporlama:
+	Eğer --bench flag'i girilmişse, hangi işlemi kaç kere yaptığımızı sayan ve bunları ekrana (stderr)
+	istenen formatta basan son dokunuşları yapacağız.

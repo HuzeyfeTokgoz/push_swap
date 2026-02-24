@@ -20,3 +20,72 @@ Aşama 5: Algoritma 3 (Complex):
 Aşama 6: Benchmark ve Raporlama:
 	Eğer --bench flag'i girilmişse, hangi işlemi kaç kere yaptığımızı sayan ve bunları ekrana (stderr)
 	istenen formatta basan son dokunuşları yapacağız.
+
+
+
+
+
+
+### Durak 1: Simple Algoritma `O(n^2)` (Düşük Karmaşa İçin)
+
+* 
+**Seçtiğimiz Silah:** Simple Min/Max Extraction (Seçmeli Sıralama Uyarlaması).
+
+
+* **Çalışma Mantığı:** 1. A yığınını baştan sona tara ve en küçük sayıyı bul.
+2. O sayıyı `ra` veya `rra` ile tepeye çek.
+3. Tepeye gelince B yığınına şutla (`pb`).
+4. A'da 3 sayı kalana kadar bunu yap. Kalan 3'lüyü kendi içinde düzelt.
+5. B'dekileri sırayla A'ya geri al (`pa`).
+* **Neden `O(n^2)` Sınıfında?:** Elimizde N tane sayı var. En küçüğü bulmak için her seferinde listeyi N kere tarıyoruz.  işlem yaptığımız için matematiksel olarak tam PDF'in istediği `O(n^2)` sınıfına oturuyor .
+
+
+
+---
+
+### Durak 2: Medium Algoritma `O(n√n)` (Orta Karmaşa İçin)
+
+* 
+**Seçtiğimiz Silah:** Chunk-based Sorting (Kova/Blok Mantığı).
+
+
+* **Çalışma Mantığı:** 1. Listeyi rastgele değil, belirli "aralıklara" böl. (Örneğin 100 sayı varsa, 
+listeyi karekökü olan 10'ar parçalık Kovalara böl).
+2. A'daki sayıya bak: "Sen 1. Kovanın içinde misin? Evetse B'ye git, değilsen A'da dönmeye devam et."
+3. Tüm listeyi bu şekilde kova kova B'ye yığ.
+4. A tamamen boşalınca sihir başlar: B yığınındaki **en büyük sayıyı** bul (Max Extraction), tepeye çek 
+ve A'ya geri at.
+* **Neden `O(n√n)` Sınıfında?:** Çünkü listeyi matematiksel olarak  (karekök N) parçaya böldük ve her 
+parça için işlem yaptık. Bu algoritma 100 sayıyı ~600 hamlede kusursuz dizer!
+
+---
+
+### Durak 3: Complex Algoritma `O(n log n)` (Yüksek Karmaşa İçin)
+
+* 
+**Seçtiğimiz Silah:** Quick Sort Adaptation (Stack Partitioning - Pivot Mantığı).
+
+
+* **Çalışma Mantığı:** 1. A yığınından rastgele bir "Pivot" (Orta değer) seç.
+2. Pivot'tan küçük olanları B'ye şutla, büyük olanlar A'da kalsın. (Liste bir anda ikiye bölündü!)
+3. Aynı işlemi B'deki sayılar ve A'da kalan sayılar için kendi içinde tekrarla.
+4. Parçalar 2'şer, 3'er elemana düşene kadar listeyi sürekli ikiye bölerek sırala.
+* 
+**Neden Radix Değil de Quick Sort?:** Çünkü PDF senden "Mükemmel" notu için 500 sayıyı 5500 hamlenin 
+altında dizmeni istiyor . Radix bunu 5200'lerde ucu ucuna yapar ama Quick Sort mantığı bu sayıyı 
+4000'lere kadar çeker. Tam 115 puanlık şov algoritmasıdır. Her adımda listeyi ikiye böldüğü için 
+matematiksel olarak tam bir `O(n log n)` algoritmasıdır .
+
+
+
+---
+
+**Mimarideki İnanılmaz Uyum:**
+Fark ettin mi? Algoritmalar birbirinin içinden doğuyor!
+
+* Durak 1'de yazacağımız "En küçüğü bulma" (Min Extraction) aracı, Durak 2'ye geçtiğimizde ufak bir 
+dokunuşla "En büyüğü bulma" (Max Extraction) aracına dönüşecek. Her şeyi sıfırdan yazmayacağız.
+
+Yol haritamız bu! PDF'in kurallarına milimetrik olarak uygun. Şimdi bu haritayı koda dökmek için o 
+bahsettiğimiz "En küçüğü bulan" radarı yazarak ilk adımı atalım mı? Yoksa önce karmaşayı (disorder) 
+ölçeceğimiz o matematik formülünü mü aradan çıkaralım? Karar senin!

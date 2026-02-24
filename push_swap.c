@@ -6,20 +6,20 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/23 02:47:11 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/24 03:34:08 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_libft/libft.h"
 #include <limits.h>
 #include <stdio.h>
+#include "ft_libft/libft.h"
 
 void	ps_parser(char *av, ps_lst **list)
 {
-	int	i;
-	long a;
-	char **arr = NULL;
+	int		i;
+	long	a;
+	char	**arr;
 	ps_lst	*temp;
 
 	arr = ft_split(av, ' ');
@@ -28,7 +28,7 @@ void	ps_parser(char *av, ps_lst **list)
 	{
 		if (is_numeric(arr[i]) == -1)
 			error(list, arr);
-		a = ft_atoi(arr[i]);
+		a = ps_atol(arr[i]);
 		if (!(INT_MIN <= a && a <= INT_MAX) || (lst_dup(*list, a) == -1))
 			error(list, arr);
 		temp = ps_lstnew(a);
@@ -97,24 +97,58 @@ double	ps_disorder(ps_lst *lst_a)
 	return ((double)lst_disorder / (double)total_pairs);
 }
 
+void	ps_router(double ps_disorder, ps_lst **lst_a, ps_lst **lst_b, config conf)
+{
+	int size;
+
+	size = ps_lstsize(*lst_a);
+	if (size == 3 && conf.algoritma == ADAPTIVE)
+		sort_three(lst_a);
+	if ((size == 4 || size == 5) && conf.algoritma == ADAPTIVE)
+		sort_five(lst_a);
+	else if (conf.algoritma == ADAPTIVE)
+	{
+		if (ps_disorder < 0.2)
+			sort_simple(lst_a, lst_b);
+		else if (ps_disorder < 0.5)
+			sort_medium(lst_a, lst_b);
+		else if (ps_disorder >= 0.5)
+			sort_complex(lst_a, lst_b);
+	}
+	else if (conf.algoritma == SIMPLE)
+		sort_simple(lst_a, lst_b);
+	else if (conf.algoritma == MEDIUM)
+		sort_medium(lst_a, lst_b);
+	else if (conf.algoritma == COMPLEX)
+		sort_complex(lst_a, lst_b);
+	if (conf.benchmark == 1)
+		sort_benchmark(lst_a, lst_b); // ?
+}
+
 int main(int ac, char **av)
 {
-	ps_lst *lst_a;
-	config conf;
-	double lst_disorder;
+	ps_lst	*lst_a;
+	ps_lst	*lst_b;
+	config	conf;
+	double	lst_disorder;
+	int		size;
 
 	lst_a = NULL;
+	lst_b = NULL;
 	conf.benchmark = 0;
 	conf.algoritma = ADAPTIVE;
-
 	ps_flag(ac, av, &lst_a, &conf);
+	size = ps_lstsize(lst_a);
+	if (!lst_a)
+		return (0);
+	if (conf.algoritma == ADAPTIVE && (size == 0 || size == 1))
+		return (0);
+	if (size == 2)
+	{
+		if ((*lst_a).content > (*lst_a).next->content)
+			ps_sa(&lst_a, 1);
+		return (0);
+	}
 	lst_disorder = ps_disorder(lst_a);
-//	if (!lst_a)
-//		error(lst_a);
-		
-
-
-	printf("Algoritma: %d, Bench: %d\n", conf.algoritma, conf.benchmark);
-	printf("%d\n", lst_a->next->content);
-	printf("%f", lst_disorder);
+	ps_router(lst_disorder, &lst_a, &lst_b, conf);
 }

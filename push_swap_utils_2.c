@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:56:11 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 04:27:56 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/24 18:24:33 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,28 @@ long	ps_atol(const char *str)
 	return (sign * nb);
 }
 
-ps_lst	*get_minmax_index(ps_lst **lst, int	min_max)
+int	get_minmax_index(ps_lst *lst, int min_max)
 {
-	ps_lst *value;
-
-	value = 0;
-	if (min_max == 1)
+	ps_lst	*temp;
+	int		lst_index;
+	int		best_index;
+	
+	best_index = 0;
+	lst_index = 0;
+	temp = lst;
+	while (lst && lst->next)
 	{
-		while ((*lst)->next)
+		lst_index++;
+		if (temp->content < lst->next->content && min_max == 0)
+			lst = lst->next;
+		else if (temp->content > lst->next->content && min_max == 1)
+			lst = lst->next;
+		else
 		{
-			if ((*lst)->content > (*lst)->next->content)
-				value = *lst;
-			lst = (*lst)->next;
-		}		
-	}
-	if (min_max == 0)
-	{
-		while ((*lst)->next)
-		{
-			if ((*lst)->content < (*lst)->next->content)
-				value = *lst;
-			lst = (*lst)->next;
+			best_index = lst_index;
+			temp = lst->next;
+			lst = lst->next;
 		}
 	}
-	return (value);
+	return (best_index);
 }

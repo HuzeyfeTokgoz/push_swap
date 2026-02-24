@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 03:34:08 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/24 20:49:27 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	ps_router(double ps_disorder, ps_lst **lst_a, ps_lst **lst_b, config conf)
 	size = ps_lstsize(*lst_a);
 	if (size == 3 && conf.algoritma == ADAPTIVE)
 		sort_three(lst_a);
-	if ((size == 4 || size == 5) && conf.algoritma == ADAPTIVE)
-		sort_five(lst_a);
+	// if ((size == 4 || size == 5) && conf.algoritma == ADAPTIVE)
+	// 	sort_five(lst_a);
 	else if (conf.algoritma == ADAPTIVE)
 	{
 		if (ps_disorder < 0.2)

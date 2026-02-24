@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_alg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 23:24:20 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 20:41:53 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/25 00:22:26 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void sort_complex(ps_lst **lst_a, ps_lst **lst_b) // quick-sort
 
 void sort_benchmark(ps_lst **lst_a, ps_lst **lst_b)
 {
-
 	(void)lst_a;
 	(void)lst_b;
 }

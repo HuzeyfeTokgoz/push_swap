@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 20:01:57 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/27 03:23:13 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	ps_parser(char *av, ps_lst **lsthead);
 void	ps_lstadd_back(ps_lst **lst, ps_lst *new);
 void	ps_lstadd_front(ps_lst **lst, ps_lst *new);
 void	ps_lstclear(ps_lst **lst);
-void	error(ps_lst **lsthead, char **arr);
+void	ps_error(ps_lst **lsthead, char **arr);
 ps_lst	*ps_lstnew(int content);
 ps_lst	*ps_lstlast(ps_lst *lst);
+ps_lst	*lst_to_index(ps_lst *lst_a);
 int		lst_dup(ps_lst *lst, int a);
 int		is_numeric(char *num);
 int		ps_lstsize(ps_lst *lst);
-long	ps_atol(const char *str);
 int		get_minmax_index(ps_lst *lst, int min_max);
-
+long	ps_atol(const char *str);
 
 void	sort_three(ps_lst **a);
 void	sort_simple(ps_lst **a, ps_lst **b);

@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 20:49:27 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/27 03:23:54 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	ps_parser(char *av, ps_lst **list)
 	while (arr[i])
 	{
 		if (is_numeric(arr[i]) == -1)
-			error(list, arr);
+			ps_error(list, arr);
 		a = ps_atol(arr[i]);
 		if (!(INT_MIN <= a && a <= INT_MAX) || (lst_dup(*list, a) == -1))
-			error(list, arr);
+			ps_error(list, arr);
 		temp = ps_lstnew(a);
 		ps_lstadd_back(list, temp);
 		i++;
@@ -73,8 +73,9 @@ void	ps_flag(int ac, char **av, ps_lst **lst_a, config *conf)
 
 double	ps_disorder(ps_lst *lst_a)
 {
-	int	lst_disorder;
-	int total_pairs;
+	int		lst_disorder;
+	int 	total_pairs;
+	double	disorder_value;
 	ps_lst	*temp;
 
 	total_pairs = 0;
@@ -94,7 +95,8 @@ double	ps_disorder(ps_lst *lst_a)
 	}
 	if (lst_disorder == 0 && total_pairs == 0)
 		return (0.0);
-	return ((double)lst_disorder / (double)total_pairs);
+	disorder_value = (double)lst_disorder / (double)total_pairs;
+	return (disorder_value);
 }
 
 void	ps_router(double ps_disorder, ps_lst **lst_a, ps_lst **lst_b, config conf)
@@ -104,8 +106,6 @@ void	ps_router(double ps_disorder, ps_lst **lst_a, ps_lst **lst_b, config conf)
 	size = ps_lstsize(*lst_a);
 	if (size == 3 && conf.algoritma == ADAPTIVE)
 		sort_three(lst_a);
-	// if ((size == 4 || size == 5) && conf.algoritma == ADAPTIVE)
-	// 	sort_five(lst_a);
 	else if (conf.algoritma == ADAPTIVE)
 	{
 		if (ps_disorder < 0.2)
@@ -122,7 +122,7 @@ void	ps_router(double ps_disorder, ps_lst **lst_a, ps_lst **lst_b, config conf)
 	else if (conf.algoritma == COMPLEX)
 		sort_complex(lst_a, lst_b);
 	if (conf.benchmark == 1)
-		sort_benchmark(lst_a, lst_b); // ?
+		sort_benchmark(lst_a, lst_b);
 }
 
 int main(int ac, char **av)
@@ -139,7 +139,7 @@ int main(int ac, char **av)
 	conf.algoritma = ADAPTIVE;
 	ps_flag(ac, av, &lst_a, &conf);
 	size = ps_lstsize(lst_a);
-	if (!lst_a)
+	if (!lst_a || ps_disorder(lst_a) == 0.0)
 		return (0);
 	if (conf.algoritma == ADAPTIVE && (size == 0 || size == 1))
 		return (0);

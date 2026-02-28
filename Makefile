@@ -5,8 +5,8 @@ CFLAGS  = -Wall -Wextra -Werror
 LIBFT_DIR   = ft_libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS    = push_swap.c push_swap_utils.c push_swap_utils_2.c push_swap_utils_3.c \
-			ps_error.c push_swap_mode.c push_swap_mode_2.c push_swap_alg.c
+SRCS    = push_swap.c push_swap_utils.c push_swap_utils_2.c push_swap_utils_3.c ps_error.c\
+			push_swap_utils_4.c push_swap_mode.c push_swap_mode_2.c push_swap_alg.c
 
 OBJS    = $(SRCS:.c=.o)
 

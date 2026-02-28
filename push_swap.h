@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/27 03:23:13 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/28 01:04:02 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		is_numeric(char *num);
 int		ps_lstsize(ps_lst *lst);
 int		get_minmax_index(ps_lst *lst, int min_max);
 long	ps_atol(const char *str);
+void	push_target(ps_lst **lst_a, ps_lst **lst_b, int *target, int *flag);
 
 void	sort_three(ps_lst **a);
 void	sort_simple(ps_lst **a, ps_lst **b);

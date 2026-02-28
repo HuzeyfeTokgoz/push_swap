@@ -6,13 +6,13 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/27 03:25:58 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/28 02:40:19 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_three(ps_lst **lst_a)
+void	sort_three(ps_lst **lst_a)
 {
     if ((*lst_a)->content > (*lst_a)->next->content &&
 		(*lst_a)->content > (*lst_a)->next->next->content)
@@ -22,6 +22,19 @@ void sort_three(ps_lst **lst_a)
         ps_rra(lst_a, 1);
     if ((*lst_a)->content > (*lst_a)->next->content)
         ps_sa(lst_a, 1);
+}
+
+void	push_target(ps_lst **lst_a, ps_lst **lst_b, int *target, int *flag)
+{
+	ps_pp(lst_a, lst_b, 1);
+	if (*flag == 1)
+	{
+		ps_sa(lst_a, 1);
+		*flag = 0;
+		*target -= 2;
+	}
+	else
+		(*target)--;
 }
 
 static void	to_index(int size, ps_lst **temp, ps_lst *lst_a, int *arr)
@@ -72,14 +85,16 @@ static int	*buble_sort(int size, int *arr)
 
 ps_lst	*lst_to_index(ps_lst *lst_a)
 {	
-	int	size;
-	int	i;
-	int *arr;
-	ps_lst *temp;
-	
+	int		size;
+	int		i;
+	int		*arr;
+	ps_lst	*temp;
+
 	i = 0;
 	size = ps_lstsize(lst_a);
 	arr = malloc(sizeof(int) * size);
+	if (!arr)
+		return (NULL);
 	temp = lst_a;
 	while (temp)
 	{

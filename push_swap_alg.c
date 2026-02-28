@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 23:24:20 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/27 07:31:25 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/02/28 01:13:14 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,27 @@ void	sort_simple(ps_lst **lst_a, ps_lst **lst_b)
 
 void	sort_push_a(ps_lst **lst_a, ps_lst **lst_b)
 {
-	int max_index;
-	int moves;
-	int size;
+	int target;
+	int flag;
 
+	flag = 0;
+	target = ps_lstsize(*lst_b) - 1;
 	while (*lst_b)
 	{
-		size = ps_lstsize(*lst_b);
-		max_index = get_minmax_index(*lst_b, 1);
-		if (max_index <= (size / 2))
+		if ((*lst_b)->content == target)
+			push_target(lst_a, lst_b, &target, &flag);
+		else if ((*lst_b)->content == target - 1)
 		{
-			while (max_index--)
-				ps_rb(lst_b, 1);
+			ps_pp(lst_a, lst_b, 1);
+			flag = 1;
 		}
 		else
 		{
-			moves = size - max_index;
-			while (moves--)
+			if (get_minmax_index(*lst_b, 1) <= (ps_lstsize(*lst_b) / 2))
+				ps_rb(lst_b, 1);
+			else
 				ps_rrb(lst_b, 1);
 		}
-		ps_pp(lst_a, lst_b, 1);
 	}	
 }
 
@@ -104,7 +105,7 @@ void	sort_medium(ps_lst **lst_a, ps_lst **lst_b)
 	sort_push_a(lst_a, lst_b);
 }
 
-void	sort_complex(ps_lst **lst_a, ps_lst **lst_b) // quick-sort
+void	sort_complex(ps_lst **lst_a, ps_lst **lst_b)
 {
 	(void)lst_a;
 	(void)lst_b;

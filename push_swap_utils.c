@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 00:46:06 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 00:57:19 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/05 04:43:30 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ ps_lst	*ps_lstnew(int content)
 	if (!newnode)
 		return (NULL);
 	newnode->content = content;
+	newnode->index = 0;
 	newnode->next = NULL;
 	return (newnode);
 }

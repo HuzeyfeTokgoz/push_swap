@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/27 23:51:09 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/05 05:12:16 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ double	ps_disorder(ps_lst *lst_a)
 		while (temp)
 		{
 			total_pairs++;
-			if (lst_a->content > temp->content)
+			if (lst_a->index > temp->index)
 				lst_disorder++;
 			temp = temp->next;
 		}
@@ -139,13 +139,14 @@ int main(int ac, char **av)
 	conf.algoritma = ADAPTIVE;
 	ps_flag(ac, av, &lst_a, &conf);
 	size = ps_lstsize(lst_a);
-	if (!lst_a || ps_disorder(lst_a) == 0.0)
+	if (!lst_a)
 		return (0);
-	if (conf.algoritma == ADAPTIVE && (size == 0 || size == 1))
+	lst_a = lst_to_index(lst_a);
+	if ((conf.algoritma == ADAPTIVE && (size == 0 || size == 1)) || (ps_disorder(lst_a) == 0.0))
 		return (0);
 	if (size == 2)
 	{
-		if ((*lst_a).content > (*lst_a).next->content)
+		if ((*lst_a).index > (*lst_a).next->index)
 			ps_sa(&lst_a, 1);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:56:11 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 18:24:33 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/05 04:57:48 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ int	get_minmax_index(ps_lst *lst, int min_max)
 	while (lst && lst->next)
 	{
 		lst_index++;
-		if (temp->content < lst->next->content && min_max == 0)
+		if (temp->index < lst->next->index && min_max == 0)
 			lst = lst->next;
-		else if (temp->content > lst->next->content && min_max == 1)
+		else if (temp->index > lst->next->index && min_max == 1)
 			lst = lst->next;
 		else
 		{

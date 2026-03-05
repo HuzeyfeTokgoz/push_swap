@@ -89,3 +89,42 @@ dokunuşla "En büyüğü bulma" (Max Extraction) aracına dönüşecek. Her şe
 Yol haritamız bu! PDF'in kurallarına milimetrik olarak uygun. Şimdi bu haritayı koda dökmek için o 
 bahsettiğimiz "En küçüğü bulan" radarı yazarak ilk adımı atalım mı? Yoksa önce karmaşayı (disorder) 
 ölçeceğimiz o matematik formülünü mü aradan çıkaralım? Karar senin!
+
+
+
+
+base4 radix:
+
+while (shift < max_bit_sayisi)
+{
+    // Sayaçları sıfırla
+    count_0 = 0, count_1 = 0, count_2 = 0
+    
+    // --- ADIM 1 ---
+    size = ps_lstsize(a)
+    for (i = 0'dan size'a kadar)
+    {
+        grup_değeri = (sayı >> shift) & 3  // Sayının 0,1,2,3 olduğunu bul
+        
+        if (grup_değeri == 0)      -> pb yap, rb yap, count_0++
+        else if (grup_değeri == 1) -> pb yap, count_1++
+        else                       -> ra yap (2 ve 3'leri atla)
+    }
+
+    // --- ADIM 2 ---
+    size = ps_lstsize(a) // A'nın yeni boyutu (sadece 2 ve 3'ler kaldı)
+    for (i = 0'dan size'a kadar)
+    {
+        grup_değeri = (sayı >> shift) & 3
+        
+        if (grup_değeri == 2)      -> pb yap, count_2++
+        else                       -> ra yap (3'leri atla)
+    }
+
+    // --- ADIM 3: B'den A'ya Toplama ---
+    for (count_2 kadar) -> pa yap (2'ler A'ya gitti)
+    for (count_1 kadar) -> pa yap (1'ler A'ya gitti)
+    for (count_0 kadar) -> rrb yap, pa yap (0'lar dipten geldi ve A'ya gitti)
+
+    shift += 2;
+}

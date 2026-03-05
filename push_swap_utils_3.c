@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/28 02:40:19 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/05 04:58:46 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	sort_three(ps_lst **lst_a)
 {
-    if ((*lst_a)->content > (*lst_a)->next->content &&
-		(*lst_a)->content > (*lst_a)->next->next->content)
+    if ((*lst_a)->index > (*lst_a)->next->index &&
+		(*lst_a)->index > (*lst_a)->next->next->index)
         ps_ra(lst_a, 1);
-    else if ((*lst_a)->next->content > (*lst_a)->content &&
-			(*lst_a)->next->content > (*lst_a)->next->next->content)
+    else if ((*lst_a)->next->index > (*lst_a)->index &&
+			(*lst_a)->next->index > (*lst_a)->next->next->index)
         ps_rra(lst_a, 1);
-    if ((*lst_a)->content > (*lst_a)->next->content)
+    if ((*lst_a)->index > (*lst_a)->next->index)
         ps_sa(lst_a, 1);
 }
 
@@ -49,7 +49,7 @@ static void	to_index(int size, ps_lst **temp, ps_lst *lst_a, int *arr)
 		{
 			if (arr[i] == (*temp)->content)
 			{
-				(*temp)->content = i;
+				(*temp)->index = i;
 				break ;
 			}
 			i++;

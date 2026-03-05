@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 21:33:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/24 01:21:29 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/05 05:02:45 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,16 @@ void	ps_pp(ps_lst **a, ps_lst **b, int papb)
 void	ps_sa(ps_lst **a, int print_flg)
 {
 	int	temp;
+	int	temp_index;
 
-	temp = 0;
 	if (!*a || !(*a)->next)
 		return ;
 	temp = (*a)->content;
 	(*a)->content = (*a)->next->content;
 	(*a)->next->content = temp;
+	temp_index = (*a)->index;
+	(*a)->index = (*a)->next->index;
+	(*a)->next->index = temp_index;
 	if (print_flg)
 		write (1, "sa\n", 3);
 }
@@ -56,6 +59,7 @@ void	ps_sa(ps_lst **a, int print_flg)
 void	ps_sb(ps_lst **b, int print_flg)
 {
 	int	temp;
+	int	temp_index;
 
 	temp = 0;
 	if (!*b || !(*b)->next)
@@ -63,6 +67,9 @@ void	ps_sb(ps_lst **b, int print_flg)
 	temp = (*b)->content;
 	(*b)->content = (*b)->next->content;
 	(*b)->next->content = temp;
+	temp_index = (*b)->index;
+	(*b)->index = (*b)->next->index;
+	(*b)->next->index = temp_index;
 	if (print_flg)
 		write (1, "sb\n", 3);
 }

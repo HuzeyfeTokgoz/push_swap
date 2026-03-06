@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/05 04:58:46 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/05 23:42:46 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	to_index(int size, ps_lst **temp, ps_lst *lst_a, int *arr)
 	}
 }
 
-static int	*buble_sort(int size, int *arr)
+static int	*bubble_sort(int size, int *arr)
 {
 	int	i;
 	int tmp;
@@ -101,7 +101,7 @@ ps_lst	*lst_to_index(ps_lst *lst_a)
 		arr[i++] = temp->content;
 		temp = temp->next;
 	}
-	arr = buble_sort(size, arr);
+	arr = bubble_sort(size, arr);
 	to_index(size, &temp, lst_a, arr);
 	free(arr);
 	return (lst_a);

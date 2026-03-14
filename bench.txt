@@ -1,0 +1,12 @@
+[bench] disorder: 100.00%
+[bench] strategy: Adaptive
+[bench] total_ops: 2
+[bench] sa: 1
+[bench] sb: 0
+[bench] pa: 0
+[bench] pb: 0
+[bench] ra: 1
+[bench] rb: 0
+[bench] rra: 0
+[bench] rrb: 0
+-----------------------------

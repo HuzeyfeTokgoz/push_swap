@@ -6,30 +6,30 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/05 23:42:46 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/14 00:28:32 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(ps_lst **lst_a)
+void	sort_three(ps_lst **lst_a, config *conf)
 {
     if ((*lst_a)->index > (*lst_a)->next->index &&
 		(*lst_a)->index > (*lst_a)->next->next->index)
-        ps_ra(lst_a, 1);
+        ps_ra(lst_a, conf);
     else if ((*lst_a)->next->index > (*lst_a)->index &&
 			(*lst_a)->next->index > (*lst_a)->next->next->index)
-        ps_rra(lst_a, 1);
+        ps_rra(lst_a, conf);
     if ((*lst_a)->index > (*lst_a)->next->index)
-        ps_sa(lst_a, 1);
+        ps_sa(lst_a, conf);
 }
 
-void	push_target(ps_lst **lst_a, ps_lst **lst_b, int *target, int *flag)
+void	push_target(ps_lst **lst_a, ps_lst **lst_b, int *target, int *flag, config *conf)
 {
-	ps_pp(lst_a, lst_b, 1);
+	ps_pa(lst_a, lst_b, conf);
 	if (*flag == 1)
 	{
-		ps_sa(lst_a, 1);
+		ps_sa(lst_a, conf);
 		*flag = 0;
 		*target -= 2;
 	}

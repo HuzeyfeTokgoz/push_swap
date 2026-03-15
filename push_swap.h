@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/14 04:05:02 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/15 03:55:59 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef	struct ps_config
 	int	algoritma;
 	int	benchmark;
 	double disorder;
+	int is_checker;
 	int pb;
 	int pa;
 	int sa;

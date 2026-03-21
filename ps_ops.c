@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_mode.c                                   :+:      :+:    :+:   */
+/*   ps_ops.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 21:33:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/14 00:46:26 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:08:56 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ps_pa(ps_lst **a, ps_lst **b, config *conf)
 	ps_lstadd_front(a, temp);
 	if (conf)
         conf->pa++;
-	write(1, "pa\n", 3);
+	if (conf && conf->is_checker == 0)
+		write (1, "pa\n", 3);
 }
 
 void	ps_pb(ps_lst **a, ps_lst **b, config *conf)
@@ -40,7 +41,8 @@ void	ps_pb(ps_lst **a, ps_lst **b, config *conf)
 	ps_lstadd_front(b, temp);
 	if (conf)
         conf->pb++;
-	write(1, "pb\n", 3);
+	if (conf && conf->is_checker == 0)
+		write (1, "pb\n", 3);
 }
 
 void	ps_sa(ps_lst **a, config *conf)
@@ -58,7 +60,8 @@ void	ps_sa(ps_lst **a, config *conf)
 	(*a)->next->index = temp_index;
 	if (conf)
         conf->sa++;
-	write(1, "sa\n", 3);
+	if (conf && conf->is_checker == 0)
+		write (1, "sa\n", 3);
 }
 
 void	ps_sb(ps_lst **b, config *conf)
@@ -77,7 +80,8 @@ void	ps_sb(ps_lst **b, config *conf)
 	(*b)->next->index = temp_index;
 	if (conf)
         conf->sb++;
-	write(1, "sb\n", 3);
+	if (conf && conf->is_checker == 0)
+		write (1, "sb\n", 3);
 }
 
 void	ps_ra(ps_lst **a, config *conf)
@@ -92,5 +96,6 @@ void	ps_ra(ps_lst **a, config *conf)
 	ps_lstadd_back(a, temp);
 	if (conf)
         conf->ra++;
-	write(1, "ra\n", 3);
+	if (conf && conf->is_checker == 0)
+		write (1, "ra\n", 3);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:56:11 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/05 04:57:48 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:03:07 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,3 @@ long	ps_atol(const char *str)
 	return (sign * nb);
 }
 
-int	get_minmax_index(ps_lst *lst, int min_max)
-{
-	ps_lst	*temp;
-	int		lst_index;
-	int		best_index;
-	
-	best_index = 0;
-	lst_index = 0;
-	temp = lst;
-	while (lst && lst->next)
-	{
-		lst_index++;
-		if (temp->index < lst->next->index && min_max == 0)
-			lst = lst->next;
-		else if (temp->index > lst->next->index && min_max == 1)
-			lst = lst->next;
-		else
-		{
-			best_index = lst_index;
-			temp = lst->next;
-			lst = lst->next;
-		}
-	}
-	return (best_index);
-}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_mode_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:58:08 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/13 23:42:05 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 15:54:00 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ps_rb(ps_lst **b, config *conf)
 	ps_lstadd_back(b, temp);
 	if (conf)
         conf->rb++;
-	write (1, "rb\n", 3);
+	if (conf && conf->is_checker == 0)
+		write (1, "rb\n", 3);
 }
 
 void	ps_rra(ps_lst **a, config *conf)
@@ -41,8 +42,8 @@ void	ps_rra(ps_lst **a, config *conf)
 	temp->next = NULL;
 	if (conf)
         conf->rra++;
-	write (1, "rra\n", 4);
-}
+	if (conf && conf->is_checker == 0)
+		write (1, "rra\n", 4);}
 
 void	ps_rrb(ps_lst **b, config *conf)
 {
@@ -57,5 +58,5 @@ void	ps_rrb(ps_lst **b, config *conf)
 	temp->next = NULL;
 	if (conf)
         conf->rrb++;
-	write (1, "rrb\n", 4);
-}
+	if (conf && conf->is_checker == 0)
+		write (1, "rrb\n", 4);}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 22:15:40 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/02/25 23:12:04 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 17:43:04 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

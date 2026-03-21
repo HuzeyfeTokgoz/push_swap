@@ -10,7 +10,7 @@ LIBFT_DIR   = ft_libft
 LIBFT       = $(LIBFT_DIR)/libft.a
 
 SRCS        = ps_parser.c push_swap.c ps_utils.c ps_utils_2.c ps_benchmark.c ps_error.c \
-              ps_medium_alg.c ps_ops.c ps_ops_2.c ps_simple_alg.c #ps_complex.c
+              ps_medium_alg.c ps_ops.c ps_ops_2.c ps_simple_alg.c ps_complex.c
 
 BONUS_SRCS  = ps_parser.c ps_checker.c ps_utils.c ps_utils_2.c ps_error.c ps_ops.c ps_ops_2.c \
               get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
@@ -44,7 +44,7 @@ medium: all bonus
 	@cat bench.txt
 
 complex: all bonus
-	@./$(NAME) --bench --complex $(ARG) 2> bench.txt | ./$(BONUS_NAME)
+	@./$(NAME) --bench --complex $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
 	@cat bench.txt
 
 clean:

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_3.c                                :+:      :+:    :+:   */
+/*   ps_medium_alg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 16:03:19 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 21:19:51 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int	get_minmax_index(ps_lst *lst, int min_max)
 	return (best_index);
 }
 
-void	push_target(ps_lst **lst_a, ps_lst **lst_b, int *target, int *flag, config *conf)
+void	push_target(ps_lst **lst_a, int *target, int *flag, config *conf)
 {
-	ps_pa(lst_a, lst_b, conf);
 	if (*flag == 1)
 	{
 		ps_sa(lst_a, conf);
@@ -61,7 +60,10 @@ void	sort_push_a(ps_lst **lst_a, ps_lst **lst_b, config *conf)
 	while (*lst_b)
 	{
 		if ((*lst_b)->index == target)
-			push_target(lst_a, lst_b, &target, &flag, conf);
+		{
+			ps_pa(lst_a, lst_b, conf);
+			push_target(lst_a, &target, &flag, conf);
+		}
 		else if ((*lst_b)->index == target - 1)
 		{
 			ps_pa(lst_a, lst_b, conf);
@@ -100,12 +102,10 @@ void	sort_push_b(ps_lst **lst_a, ps_lst **lst_b, int chunk_size, config *conf)
 	}
 }	
 
-void	sort_medium(ps_lst **lst_a, ps_lst **lst_b, config *conf)
+void	sort_medium(ps_lst **lst_a, ps_lst **lst_b, config *conf, int size)
 {
-	int size;
 	int chunk_size;
 
-	size = ps_lstsize(*lst_a);
 	if (size <= 100)
 		chunk_size = 25;
 	else

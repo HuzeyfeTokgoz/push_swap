@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_main.c                                          :+:      :+:    :+:   */
+/*   ps_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 03:27:22 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/15 03:58:50 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:49:58 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	ps_flag(int ac, char **av, ps_lst **lst_a, config *conf)
 	{
 		if (ft_strncmp(av[i], "--bench", 8) == 0)
 			conf->benchmark = 1;
-		else if (ft_strncmp(av[i], "--simple", 9) == 0)
+		if (ft_strncmp(av[i], "--simple", 9) == 0)
 			conf->algoritma = SIMPLE;
-		else if (ft_strncmp(av[i], "--medium", 9) == 0)
+		if (ft_strncmp(av[i], "--medium", 9) == 0)
 			conf->algoritma = MEDIUM;
-		else if (ft_strncmp(av[i], "--complex", 10) == 0)
+		if (ft_strncmp(av[i], "--complex", 10) == 0)
 			conf->algoritma = COMPLEX;
-		else if (ft_strncmp(av[i], "--adaptive", 11) == 0)
+		if (ft_strncmp(av[i], "--adaptive", 11) == 0)
 			conf->algoritma = ADAPTIVE;
 		if (av[i][0] == '-' && av[i][1] == '-')
 		{

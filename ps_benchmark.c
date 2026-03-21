@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_bench_mode.c                                    :+:      :+:    :+:   */
+/*   ps_benchmark.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 15:56:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 15:59:41 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 17:38:25 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "unistd.h"
+#include "ft_libft/libft.h"
 
 static void	print_bench_row(char *label, int count)
 {
@@ -63,4 +64,7 @@ void	sort_benchmark(config *conf)
 	print_bench_row("rb", conf->rb);
 	print_bench_row("rra", conf->rra);
 	print_bench_row("rrb", conf->rrb);
+	print_bench_row("rr", conf->rrb);
+	print_bench_row("rrr", conf->rrb);
+	print_bench_row("ss", conf->rrb);
 }

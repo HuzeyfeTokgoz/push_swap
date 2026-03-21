@@ -32,15 +32,15 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
 
 adaptive: all bonus
-	@./$(NAME) --bench $(ARG) 2> bench.txt | ./$(BONUS_NAME)
+	@./$(NAME) --bench $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
 	@cat bench.txt
 
 simple: all bonus
-	@./$(NAME) --bench --simple $(ARG) 2> bench.txt | ./$(BONUS_NAME)
+	@./$(NAME) --bench --simple $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
 	@cat bench.txt
 
 medium: all bonus
-	@./$(NAME) --bench --medium $(ARG) 2> bench.txt | ./$(BONUS_NAME)
+	@./$(NAME) --bench --medium $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
 	@cat bench.txt
 
 complex: all bonus

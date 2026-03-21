@@ -6,11 +6,17 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 23:24:20 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 16:05:49 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:27:00 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void	sort_complex(ps_lst **lst_a, ps_lst **lst_b, config *conf)
+{
+	(void)lst_a;
+	(void)lst_b;
+	(void)conf;
+}
 
 void	sort_simple(ps_lst **lst_a, ps_lst **lst_b, config *conf)
 {
@@ -122,3 +128,4 @@ ps_lst	*lst_to_index(ps_lst *lst_a)
 	free(arr);
 	return (lst_a);
 }
+

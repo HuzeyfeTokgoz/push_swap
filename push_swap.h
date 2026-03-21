@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 15:57:57 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:24:35 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	quick_pb(ps_lst **lst_a, ps_lst **lst_b, int size, config *conf);
 void	quick_pa(ps_lst **lst_a, ps_lst **lst_b, int size, config *conf);
 double	ps_disorder(ps_lst *lst_a);
 void	sort_benchmark(config *conf);
+void	ps_parser(char *av, ps_lst **list);
+void	ps_flag(int ac, char **av, ps_lst **lst_a, config *conf);
 
 void	sort_three(ps_lst **a, config *conf);
 void	sort_simple(ps_lst **a, ps_lst **b, config *conf);

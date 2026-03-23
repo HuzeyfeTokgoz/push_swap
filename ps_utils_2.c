@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ps_utils_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:56:11 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 17:42:49 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:14:36 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lst_dup(ps_lst *lst, int a)
+int	lst_dup(t_ps_lst *lst, int a)
 {
 	while (lst != NULL)
 	{
@@ -25,8 +25,8 @@ int	lst_dup(ps_lst *lst, int a)
 
 int	is_numeric(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -43,7 +43,7 @@ int	is_numeric(char *str)
 	return (1);
 }
 
-int	ps_lstsize(ps_lst *lst)
+int	ps_lstsize(t_ps_lst *lst)
 {
 	int	size;
 
@@ -76,4 +76,3 @@ long	ps_atol(const char *str)
 	}
 	return (sign * nb);
 }
-

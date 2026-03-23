@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_complex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:05:15 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 21:47:35 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:21:49 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	get_max_bits(int max_num)
 	return (max_bits);
 }
 
-void	sort_complex(ps_lst **lst_a, ps_lst **lst_b, config *conf, int size)
+void	sort_complex(t_ps_lst **lst_a, t_ps_lst **lst_b,
+			t_config *conf, int size)
 {
 	int	max_bits;
 	int	i;

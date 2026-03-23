@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ps_benchmark.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 15:56:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 17:43:14 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/24 00:04:12 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_libft/libft.h"
 #include "push_swap.h"
 #include "unistd.h"
-#include "ft_libft/libft.h"
 
 static void	print_bench_row(char *label, int count)
 {
@@ -39,12 +39,10 @@ static void	print_bench_disorder(double disorder)
 	write(2, "%\n", 2);
 }
 
-void	sort_benchmark(config *conf)
+void	sort_benchmark(t_config *conf, int total)
 {
-	int	total;
-
-	total = conf->sa + conf->sb + conf->pa + conf->pb \
-			+ conf->ra + conf->rb + conf->rra + conf->rrb;
+	total = conf->sa + conf->sb + conf->pa + conf->pb + conf->ra + conf->rb
+		+ conf->rra + conf->rrb;
 	print_bench_disorder(conf->disorder);
 	write(2, "[bench] strategy: ", 18);
 	if (conf->algoritma == SIMPLE)
@@ -64,7 +62,7 @@ void	sort_benchmark(config *conf)
 	print_bench_row("rb", conf->rb);
 	print_bench_row("rra", conf->rra);
 	print_bench_row("rrb", conf->rrb);
-	print_bench_row("rr", conf->rrb);
-	print_bench_row("rrr", conf->rrb);
-	print_bench_row("ss", conf->rrb);
+	print_bench_row("rr", 0);
+	print_bench_row("rrr", 0);
+	print_bench_row("ss", 0);
 }

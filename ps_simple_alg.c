@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ps_simple_alg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 23:24:20 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 21:48:52 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:22:51 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_simple(ps_lst **lst_a, ps_lst **lst_b, config *conf, int size)
+void	sort_simple(t_ps_lst **lst_a, t_ps_lst **lst_b,
+			t_config *conf, int size)
 {
 	int	min_index;
-	int moves;
-	
+	int	moves;
+
 	while (size > 3)
 	{
 		min_index = get_minmax_index(*lst_a, 0);
@@ -28,9 +29,9 @@ void	sort_simple(ps_lst **lst_a, ps_lst **lst_b, config *conf, int size)
 		else
 		{
 			moves = size - min_index;
-			while(moves--)
+			while (moves--)
 				ps_rra(lst_a, conf);
-		}	
+		}
 		ps_pb(lst_a, lst_b, conf);
 		size--;
 	}
@@ -39,22 +40,22 @@ void	sort_simple(ps_lst **lst_a, ps_lst **lst_b, config *conf, int size)
 		ps_pa(lst_a, lst_b, conf);
 }
 
-void	sort_three(ps_lst **lst_a, config *conf)
+void	sort_three(t_ps_lst **lst_a, t_config *conf)
 {
-    if ((*lst_a)->index > (*lst_a)->next->index &&
-		(*lst_a)->index > (*lst_a)->next->next->index)
-        ps_ra(lst_a, conf);
-    else if ((*lst_a)->next->index > (*lst_a)->index &&
-			(*lst_a)->next->index > (*lst_a)->next->next->index)
-        ps_rra(lst_a, conf);
-    if ((*lst_a)->index > (*lst_a)->next->index)
-        ps_sa(lst_a, conf);
+	if ((*lst_a)->index > (*lst_a)->next->index
+		&& (*lst_a)->index > (*lst_a)->next->next->index)
+		ps_ra(lst_a, conf);
+	else if ((*lst_a)->next->index > (*lst_a)->index
+		&& (*lst_a)->next->index > (*lst_a)->next->next->index)
+		ps_rra(lst_a, conf);
+	if ((*lst_a)->index > (*lst_a)->next->index)
+		ps_sa(lst_a, conf);
 }
 
-static void	to_index(int size, ps_lst *lst_a, int *arr)
+static void	to_index(int size, t_ps_lst *lst_a, int *arr)
 {
-	int		i;
-	ps_lst	*temp;
+	int			i;
+	t_ps_lst	*temp;
 
 	temp = lst_a;
 	while (temp)
@@ -76,33 +77,33 @@ static void	to_index(int size, ps_lst *lst_a, int *arr)
 static int	*bubble_sort(int size, int *arr)
 {
 	int	i;
-	int tmp;
-	int j;
+	int	tmp;
+	int	j;
 
 	i = 1;
 	while (i < size)
-    {
+	{
 		j = 0;
 		while (j < size - i)
-        {
-			if(arr[j] > arr[j + 1])
-            {
-                tmp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = tmp;
-            }
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+			}
 			j++;
-        }
+		}
 		i++;
-    }
+	}
 	return (arr);
 }
 
-ps_lst	*lst_to_index(ps_lst *lst_a, int size)
+t_ps_lst	*lst_to_index(t_ps_lst *lst_a, int size)
 {
-	int		i;
-	int		*arr;
-	ps_lst	*temp;
+	int			i;
+	int			*arr;
+	t_ps_lst	*temp;
 
 	i = 0;
 	arr = malloc(sizeof(int) * size);
@@ -119,4 +120,3 @@ ps_lst	*lst_to_index(ps_lst *lst_a, int size)
 	free(arr);
 	return (lst_a);
 }
-

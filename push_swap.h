@@ -3,77 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 21:48:14 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/24 00:04:23 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdlib.h>
 
 typedef struct push_swap
 {
 	int					content;
 	int					index;
 	struct push_swap	*next;
-}	ps_lst;
+}	t_ps_lst;
 
-typedef	struct ps_config
+typedef struct ps_t_config
 {
-	int	algoritma;
-	int	benchmark;
-	double disorder;
-	int is_checker;
-	int pb;
-	int pa;
-	int sa;
-	int sb;
-	int ra;
-	int rra;
-	int rb;
-	int rrb;
-}	config;
+	int		algoritma;
+	int		benchmark;
+	double	disorder;
+	int		is_checker;
+	int		pb;
+	int		pa;
+	int		sa;
+	int		sb;
+	int		ra;
+	int		rb;
+	int		rra;
+	int		rrb;
+}	t_config;
 
-#define ADAPTIVE 0
-#define SIMPLE 1
-#define MEDIUM 2
-#define COMPLEX 3
+# define ADAPTIVE 0
+# define SIMPLE 1
+# define MEDIUM 2
+# define COMPLEX 3
 
-#include <stdlib.h>
+t_ps_lst	*ps_lstnew(int content);
+t_ps_lst	*ps_lstlast(t_ps_lst *lst);
+t_ps_lst	*lst_to_index(t_ps_lst *lst_a, int size);
+long		ps_atol(const char *str);
+char		**ft_split(char const *s, char c);
+int			lst_dup(t_ps_lst *lst, int a);
+int			is_numeric(char *num);
+int			ps_lstsize(t_ps_lst *lst);
+int			get_minmax_index(t_ps_lst *lst, int min_max);
+void		ps_parser(char *av, t_ps_lst **lsthead);
+void		ps_lstadd_back(t_ps_lst **lst, t_ps_lst *new);
+void		ps_lstadd_front(t_ps_lst **lst, t_ps_lst *new);
+void		ps_lstclear(t_ps_lst **lst);
+void		ps_error(t_ps_lst **lsthead, char **arr);
+void		push_target(t_ps_lst **lst_a, int *target, int *flag,
+				t_config *conf);
+void		quick_pb(t_ps_lst **lst_a, t_ps_lst **lst_b, int size,
+				t_config *conf);
+void		quick_pa(t_ps_lst **lst_a, t_ps_lst **lst_b, int size,
+				t_config *conf);
+void		ps_parser(char *av, t_ps_lst **list);
+void		ps_flag(int ac, char **av, t_ps_lst **lst_a, t_config *conf);
 
-char	**ft_split(char const *s, char c);
-void	ps_parser(char *av, ps_lst **lsthead);
-void	ps_lstadd_back(ps_lst **lst, ps_lst *new);
-void	ps_lstadd_front(ps_lst **lst, ps_lst *new);
-void	ps_lstclear(ps_lst **lst);
-void	ps_error(ps_lst **lsthead, char **arr);
-ps_lst	*ps_lstnew(int content);
-ps_lst	*ps_lstlast(ps_lst *lst);
-ps_lst	*lst_to_index(ps_lst *lst_a, int size);
-int		lst_dup(ps_lst *lst, int a);
-int		is_numeric(char *num);
-int		ps_lstsize(ps_lst *lst);
-int		get_minmax_index(ps_lst *lst, int min_max);
-long	ps_atol(const char *str);
-void	push_target(ps_lst **lst_a, int *target, int *flag, config *conf);
-void	quick_pb(ps_lst **lst_a, ps_lst **lst_b, int size, config *conf);
-void	quick_pa(ps_lst **lst_a, ps_lst **lst_b, int size, config *conf);
-void	sort_benchmark(config *conf);
-void	ps_parser(char *av, ps_lst **list);
-void	ps_flag(int ac, char **av, ps_lst **lst_a, config *conf);
+void		sort_three(t_ps_lst **a, t_config *conf);
+void		sort_simple(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
+void		sort_medium(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
+void		sort_complex(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
+void		sort_benchmark(t_config *conf, int total);
 
-void	sort_three(ps_lst **a, config *conf);
-void	sort_simple(ps_lst **a, ps_lst **b, config *conf, int size);
-void	sort_medium(ps_lst **a, ps_lst **b, config *conf, int size);
-void	sort_complex(ps_lst **a, ps_lst **b, config *conf, int size);
-void	sort_benchmark(config *conf);
+void		ps_pa(t_ps_lst **a, t_ps_lst **b, t_config *conf);
+void		ps_pb(t_ps_lst **a, t_ps_lst **b, t_config *conf);
+void		ps_sa(t_ps_lst **a, t_config *conf);
+void		ps_sb(t_ps_lst **b, t_config *conf);
+void		ps_ra(t_ps_lst **a, t_config *conf);
+void		ps_rb(t_ps_lst **b, t_config *conf);
+void		ps_rra(t_ps_lst **a, t_config *conf);
+void		ps_rrb(t_ps_lst **b, t_config *conf);
 
-void	ps_pa(ps_lst **a, ps_lst **b, config *conf);
-void	ps_pb(ps_lst **a, ps_lst **b, config *conf);
-void	ps_sa(ps_lst **a, config *conf);
-void	ps_sb(ps_lst **b, config *conf);
-void	ps_ra(ps_lst **a, config *conf);
-void	ps_rb(ps_lst **b, config *conf);
-void	ps_rra(ps_lst **a, config *conf);
-void	ps_rrb(ps_lst **b, config *conf);
-
-
+#endif

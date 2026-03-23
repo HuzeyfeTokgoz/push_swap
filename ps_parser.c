@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ps_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 03:27:22 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 17:42:53 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:55:18 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "ft_libft/libft.h"
+#include "push_swap.h"
 #include <limits.h>
 
-
-void	ps_parser(char *av, ps_lst **list)
+void	ps_parser(char *av, t_ps_lst **list)
 {
-	int		i;
-	long	a;
-	char	**arr;
-	ps_lst	*temp;
+	int			i;
+	long		a;
+	char		**arr;
+	t_ps_lst	*temp;
 
 	arr = ft_split(av, ' ');
 	i = 0;
@@ -41,10 +40,10 @@ void	ps_parser(char *av, ps_lst **list)
 		free(arr[i]);
 		i++;
 	}
-	free(arr);	
+	free(arr);
 }
 
-void	ps_flag(int ac, char **av, ps_lst **lst_a, config *conf)
+void	ps_flag(int ac, char **av, t_ps_lst **lst_a, t_config *conf)
 {
 	int	i;
 
@@ -55,11 +54,11 @@ void	ps_flag(int ac, char **av, ps_lst **lst_a, config *conf)
 			conf->benchmark = 1;
 		if (ft_strncmp(av[i], "--simple", 9) == 0)
 			conf->algoritma = SIMPLE;
-		if (ft_strncmp(av[i], "--medium", 9) == 0)
+		else if (ft_strncmp(av[i], "--medium", 9) == 0)
 			conf->algoritma = MEDIUM;
-		if (ft_strncmp(av[i], "--complex", 10) == 0)
+		else if (ft_strncmp(av[i], "--complex", 10) == 0)
 			conf->algoritma = COMPLEX;
-		if (ft_strncmp(av[i], "--adaptive", 11) == 0)
+		else if (ft_strncmp(av[i], "--adaptive", 11) == 0)
 			conf->algoritma = ADAPTIVE;
 		if (av[i][0] == '-' && av[i][1] == '-')
 		{

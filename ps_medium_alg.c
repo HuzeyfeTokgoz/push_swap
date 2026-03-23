@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ps_medium_alg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 21:19:51 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:22:07 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_minmax_index(ps_lst *lst, int min_max)
+int	get_minmax_index(t_ps_lst *lst, int min_max)
 {
-	ps_lst	*temp;
-	int		lst_index;
-	int		best_index;
-	
+	t_ps_lst	*temp;
+	int			lst_index;
+	int			best_index;
+
 	best_index = 0;
 	lst_index = 0;
 	temp = lst;
@@ -38,7 +38,7 @@ int	get_minmax_index(ps_lst *lst, int min_max)
 	return (best_index);
 }
 
-void	push_target(ps_lst **lst_a, int *target, int *flag, config *conf)
+void	push_target(t_ps_lst **lst_a, int *target, int *flag, t_config *conf)
 {
 	if (*flag == 1)
 	{
@@ -50,10 +50,10 @@ void	push_target(ps_lst **lst_a, int *target, int *flag, config *conf)
 		(*target)--;
 }
 
-void	sort_push_a(ps_lst **lst_a, ps_lst **lst_b, config *conf)
+void	sort_push_a(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 {
-	int target;
-	int flag;
+	int	target;
+	int	flag;
 
 	flag = 0;
 	target = ps_lstsize(*lst_b) - 1;
@@ -76,14 +76,15 @@ void	sort_push_a(ps_lst **lst_a, ps_lst **lst_b, config *conf)
 			else
 				ps_rrb(lst_b, conf);
 		}
-	}	
+	}
 }
 
-void	sort_push_b(ps_lst **lst_a, ps_lst **lst_b, int chunk_size, config *conf)
+void	sort_push_b(t_ps_lst **lst_a, t_ps_lst **lst_b, int chunk_size,
+		t_config *conf)
 {
-	int size;
-	int limit;
-	
+	int	size;
+	int	limit;
+
 	size = 0;
 	limit = chunk_size;
 	while (*lst_a)
@@ -100,11 +101,12 @@ void	sort_push_b(ps_lst **lst_a, ps_lst **lst_b, int chunk_size, config *conf)
 		else
 			ps_ra(lst_a, conf);
 	}
-}	
+}
 
-void	sort_medium(ps_lst **lst_a, ps_lst **lst_b, config *conf, int size)
+void	sort_medium(t_ps_lst **lst_a, t_ps_lst **lst_b,
+			t_config *conf, int size)
 {
-	int chunk_size;
+	int	chunk_size;
 
 	if (size <= 100)
 		chunk_size = 25;

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ps_ops.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 21:33:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 17:42:56 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:15:49 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 
-void	ps_pa(ps_lst **a, ps_lst **b, config *conf)
+void	ps_pa(t_ps_lst **a, t_ps_lst **b, t_config *conf)
 {
-	ps_lst	*temp;
+	t_ps_lst	*temp;
 
 	if (!b || !*b)
 		return ;
@@ -24,14 +24,14 @@ void	ps_pa(ps_lst **a, ps_lst **b, config *conf)
 	temp->next = NULL;
 	ps_lstadd_front(a, temp);
 	if (conf)
-        conf->pa++;
+		conf->pa++;
 	if (conf && conf->is_checker == 0)
-		write (1, "pa\n", 3);
+		write(1, "pa\n", 3);
 }
 
-void	ps_pb(ps_lst **a, ps_lst **b, config *conf)
+void	ps_pb(t_ps_lst **a, t_ps_lst **b, t_config *conf)
 {
-	ps_lst	*temp;
+	t_ps_lst	*temp;
 
 	if (!a || !*a)
 		return ;
@@ -40,12 +40,12 @@ void	ps_pb(ps_lst **a, ps_lst **b, config *conf)
 	temp->next = NULL;
 	ps_lstadd_front(b, temp);
 	if (conf)
-        conf->pb++;
+		conf->pb++;
 	if (conf && conf->is_checker == 0)
-		write (1, "pb\n", 3);
+		write(1, "pb\n", 3);
 }
 
-void	ps_sa(ps_lst **a, config *conf)
+void	ps_sa(t_ps_lst **a, t_config *conf)
 {
 	int	temp;
 	int	temp_index;
@@ -59,12 +59,12 @@ void	ps_sa(ps_lst **a, config *conf)
 	(*a)->index = (*a)->next->index;
 	(*a)->next->index = temp_index;
 	if (conf)
-        conf->sa++;
+		conf->sa++;
 	if (conf && conf->is_checker == 0)
-		write (1, "sa\n", 3);
+		write(1, "sa\n", 3);
 }
 
-void	ps_sb(ps_lst **b, config *conf)
+void	ps_sb(t_ps_lst **b, t_config *conf)
 {
 	int	temp;
 	int	temp_index;
@@ -79,14 +79,14 @@ void	ps_sb(ps_lst **b, config *conf)
 	(*b)->index = (*b)->next->index;
 	(*b)->next->index = temp_index;
 	if (conf)
-        conf->sb++;
+		conf->sb++;
 	if (conf && conf->is_checker == 0)
-		write (1, "sb\n", 3);
+		write(1, "sb\n", 3);
 }
 
-void	ps_ra(ps_lst **a, config *conf)
+void	ps_ra(t_ps_lst **a, t_config *conf)
 {
-	ps_lst	*temp;
+	t_ps_lst	*temp;
 
 	if (!a || !*a || !(*a)->next)
 		return ;
@@ -95,7 +95,7 @@ void	ps_ra(ps_lst **a, config *conf)
 	temp->next = NULL;
 	ps_lstadd_back(a, temp);
 	if (conf)
-        conf->ra++;
+		conf->ra++;
 	if (conf && conf->is_checker == 0)
-		write (1, "ra\n", 3);
+		write(1, "ra\n", 3);
 }

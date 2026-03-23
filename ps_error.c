@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ps_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hutokgoz <hutokgoz@student.42kocaeli.com.t +#+  +:+       +#+        */
+/*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 22:15:40 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/21 17:43:04 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/23 23:16:52 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 
-void	ps_error(ps_lst **lsthead, char **arr)
+void	ps_error(t_ps_lst **lsthead, char **arr)
 {
 	int	i;
 

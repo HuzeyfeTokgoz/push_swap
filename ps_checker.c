@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 01:31:33 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/23 23:59:32 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:55:45 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	ps_checker(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 {
 	char	*line;
 
-	while ((line = get_next_line(0)))
+	line = get_next_line(0);
+	while (line)
 	{
 		if (ft_strncmp(line, "sa\n", 2) == 0)
 			ps_sa(lst_a, conf);
@@ -63,6 +64,7 @@ void	ps_checker(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 		else
 			target_checker(line, lst_a, lst_b, conf);
 		free(line);
+		line = get_next_line(0);
 	}
 	if (*lst_b == NULL && is_sorted(*lst_a))
 		write(1, "OK\n", 3);

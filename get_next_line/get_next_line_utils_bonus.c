@@ -6,13 +6,13 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 14:48:01 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/24 21:57:31 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:54:19 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*gnl_copy(char *str,char *s1,char *s2)
+static char	*gnl_copy(char *str, char *s1, char *s2)
 {
 	int	i;
 	int	j;

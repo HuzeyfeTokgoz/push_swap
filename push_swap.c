@@ -6,13 +6,12 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/23 23:32:30 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/24 22:56:03 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
 
 static double	ps_disorder(t_ps_lst *lst_a)
 {
@@ -78,8 +77,6 @@ int	main(int ac, char **av)
 	lst_a = NULL;
 	lst_b = NULL;
 	ft_memset(&conf, 0, sizeof(t_config));
-	conf.algoritma = ADAPTIVE;
-	conf.benchmark = 0;
 	ps_flag(ac, av, &lst_a, &conf);
 	if (!lst_a)
 		return (0);

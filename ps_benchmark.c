@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 15:56:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/24 22:54:46 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/25 23:36:13 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	sort_benchmark(t_config *conf, int total)
 	print_bench_disorder(conf->disorder);
 	write(2, "[bench] strategy: ", 18);
 	if (conf->algoritma == SIMPLE)
-		write(2, "Simple (O(n^2))\n", 16);
+		write(2, "Simple\n", 7);
 	else if (conf->algoritma == MEDIUM)
-		write(2, "Medium (O(n*sqrt(n)))\n", 22);
+		write(2, "Medium\n", 7);
 	else if (conf->algoritma == COMPLEX)
-		write(2, "Complex (O(n log n))\n", 21);
+		write(2, "Complex\n", 8);
 	else
 		write(2, "Adaptive\n", 9);
 	print_bench_row("total_ops", total);

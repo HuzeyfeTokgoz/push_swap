@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/24 22:56:03 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/25 23:34:37 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,7 @@ int	main(int ac, char **av)
 	size = ps_lstsize(lst_a);
 	lst_a = lst_to_index(lst_a, size);
 	conf.disorder = ps_disorder(lst_a);
-	if ((conf.algoritma == ADAPTIVE && (size == 0 || size == 1))
-		|| (conf.disorder == 0.0))
+	if (conf.disorder == 0.0)
 		return (0);
-	if (size == 2)
-	{
-		if ((*lst_a).index > (*lst_a).next->index)
-			ps_sa(&lst_a, &conf);
-		return (0);
-	}
 	ps_router(&lst_a, &lst_b, &conf, size);
 }

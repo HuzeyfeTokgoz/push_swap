@@ -1,6 +1,6 @@
 # push_swap
 
-*This project has been created as part of the 42 curriculum by hutokgoz and mburdurl.*
+*This project has been created as part of the 42 curriculum by hutokgoz, mburdurl.*
 
 ## Açıklama
 Bu proje, sınırlı bir operasyon seti kullanarak `stack a` içindeki sayıları en az hamleyle sıralamayı amaçlar. İki yığın (a ve b) kullanarak, veri setinin düzensizlik durumuna göre en uygun algoritmayı seçmeyi ve Big-O karmaşıklığını öğrenmeyi hedefledik.
@@ -41,11 +41,11 @@ Projede her durum için farklı bir yaklaşım belirledik:
 * **Disorder ≥ 0.5:** High disorder, Complex algoritma.
 
 ## Contributions
-* **hutokgoz:** `disorder` metriğinin kodlanması, `simple` ve `medium` algoritmaların implementasyonu ve benchmark modunun geliştirilmesi.
+* **hutokgoz:** `parser` metriğinin kodlanması, `medium` algoritmaları bonus `checker` modunun geliştirilmesi.
 
-* **mburdurl:** `complex` algoritması, `parser` ve `checker` programının kodlanması.
+* **mburdurl:** `simple`, `complex` algoritması, `benchmark` programının kodlanması.
 
 ## Kaynaklar Ve AI Kullanımı
-* **Kaynaklar:** 42 subject PDF'i ve algoritma dökümanları kullanıldı.
+* **Kaynaklar:** 42 subject PDF'i ve Youtube algoritma animasyonları ve dökümanları kullanıldı.
 
 * **AI Kullanımı:** Proje tasarımı sırasında düzensizlik oranının matematiksel modellemesi ve `medium` algoritmadaki chunk boyutlarının belirlenmesi aşamalarında AI araçlarından mantık desteği alınmıştır. Üretilen tüm mantık yapıları manuel olarak koda dökülmüş ve test edilmiştir.

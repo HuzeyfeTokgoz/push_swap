@@ -8,7 +8,7 @@ ARG        := $(shell seq 1 $(SIZE) | shuf | tr '\n' ' ')
 
 LIBFT_DIR   = ft_libft
 LIBFT       = $(LIBFT_DIR)/libft.a
-
+ 
 SRCS        = ps_parser.c push_swap.c ps_utils.c ps_utils_2.c ps_benchmark.c ps_error.c \
               	ps_ops.c ps_ops_2.c ps_simple_alg.c ps_medium_alg.c ps_complex_alg.c
 
@@ -31,19 +31,35 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS_NAME)
 
 adaptive: all bonus
-	@./$(NAME) --bench $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
+	@./$(NAME) --bench $(ARG) 2> bench.txt > ops.txt
+	@echo "Benim Checker: "
+	@./$(BONUS_NAME) $(ARG) < ops.txt
+	@echo "Orijinal Checker: "
+	@./checker_linux $(ARG) < ops.txt
 	@cat bench.txt
 
 simple: all bonus
-	@./$(NAME) --bench --simple $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
+	@./$(NAME) --bench --simple $(ARG) 2> bench.txt > ops.txt
+	@echo "Benim Checker: "
+	@./$(BONUS_NAME) $(ARG) < ops.txt
+	@echo "Orijinal Checker: "
+	@./checker_linux $(ARG) < ops.txt
 	@cat bench.txt
 
 medium: all bonus
-	@./$(NAME) --bench --medium $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
+	@./$(NAME) --bench --medium $(ARG) 2> bench.txt > ops.txt
+	@echo "Benim Checker: "
+	@./$(BONUS_NAME) $(ARG) < ops.txt
+	@echo "Orijinal Checker: "
+	@./checker_linux $(ARG) < ops.txt
 	@cat bench.txt
 
 complex: all bonus
-	@./$(NAME) --bench --complex $(ARG) 2> bench.txt | ./$(BONUS_NAME) $(ARG)
+	@./$(NAME) --bench --complex $(ARG) 2> bench.txt > ops.txt
+	@echo "Benim Checker: "
+	@./$(BONUS_NAME) $(ARG) < ops.txt
+	@echo "Orijinal Checker: "
+	@./checker_linux $(ARG) < ops.txt
 	@cat bench.txt
 
 clean:
@@ -51,7 +67,7 @@ clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME) bench.txt
+	rm -f $(NAME) $(BONUS_NAME) bench.txt ops.txt
 	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all

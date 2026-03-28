@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/23 23:22:07 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/28 16:31:30 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	get_minmax_index(t_ps_lst *lst, int min_max)
 	return (best_index);
 }
 
-void	push_target(t_ps_lst **lst_a, int *target, int *flag, t_config *conf)
+static void	push_target(t_ps_lst **lst_a, int *target, int *flag,
+	t_config *conf)
 {
 	if (*flag == 1)
 	{
@@ -50,7 +51,7 @@ void	push_target(t_ps_lst **lst_a, int *target, int *flag, t_config *conf)
 		(*target)--;
 }
 
-void	sort_push_a(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
+static void	sort_push_a(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 {
 	int	target;
 	int	flag;
@@ -79,7 +80,7 @@ void	sort_push_a(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 	}
 }
 
-void	sort_push_b(t_ps_lst **lst_a, t_ps_lst **lst_b, int chunk_size,
+static void	sort_push_b(t_ps_lst **lst_a, t_ps_lst **lst_b, int chunk_size,
 		t_config *conf)
 {
 	int	size;

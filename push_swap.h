@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/24 00:04:23 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/28 16:29:51 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,8 @@ void		ps_lstadd_back(t_ps_lst **lst, t_ps_lst *new);
 void		ps_lstadd_front(t_ps_lst **lst, t_ps_lst *new);
 void		ps_lstclear(t_ps_lst **lst);
 void		ps_error(t_ps_lst **lsthead, char **arr);
-void		push_target(t_ps_lst **lst_a, int *target, int *flag,
-				t_config *conf);
-void		quick_pb(t_ps_lst **lst_a, t_ps_lst **lst_b, int size,
-				t_config *conf);
-void		quick_pa(t_ps_lst **lst_a, t_ps_lst **lst_b, int size,
-				t_config *conf);
 void		ps_parser(char *av, t_ps_lst **list);
 void		ps_flag(int ac, char **av, t_ps_lst **lst_a, t_config *conf);
-
 void		sort_three(t_ps_lst **a, t_config *conf);
 void		sort_simple(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_medium(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);

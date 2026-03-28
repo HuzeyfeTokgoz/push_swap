@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 01:31:33 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/24 22:55:45 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/28 16:28:58 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "push_swap.h"
 #include <unistd.h>
 
-int	is_sorted(t_ps_lst *lst_a)
+static int	is_sorted(t_ps_lst *lst_a)
 {
 	while (lst_a && lst_a->next)
 	{
@@ -27,7 +27,7 @@ int	is_sorted(t_ps_lst *lst_a)
 	return (1);
 }
 
-void	target_checker(char *line, t_ps_lst **lst_a, t_ps_lst **lst_b,
+static void	target_checker(char *line, t_ps_lst **lst_a, t_ps_lst **lst_b,
 			t_config *conf)
 {
 	if (ft_strncmp(line, "pb\n", 2) == 0)
@@ -48,7 +48,7 @@ void	target_checker(char *line, t_ps_lst **lst_a, t_ps_lst **lst_b,
 	}
 }
 
-void	ps_checker(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
+static void	ps_checker(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 {
 	char	*line;
 

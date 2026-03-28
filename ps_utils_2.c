@@ -6,11 +6,12 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:56:11 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/23 23:14:36 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/28 16:16:15 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <unistd.h>
 
 int	lst_dup(t_ps_lst *lst, int a)
 {
@@ -75,4 +76,24 @@ long	ps_atol(const char *str)
 		str++;
 	}
 	return (sign * nb);
+}
+
+void	ps_error(t_ps_lst **lsthead, char **arr)
+{
+	int	i;
+
+	i = 0;
+	write(2, "Error\n", 6);
+	if (arr)
+	{
+		while (arr[i])
+		{
+			free(arr[i]);
+			i++;
+		}
+		free(arr);
+	}
+	if (lsthead)
+		ps_lstclear(lsthead);
+	exit(1);
 }

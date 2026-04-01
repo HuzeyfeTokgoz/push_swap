@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:19:23 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/28 16:31:30 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/01 21:32:12 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,14 @@ void	sort_medium(t_ps_lst **lst_a, t_ps_lst **lst_b,
 {
 	int	chunk_size;
 
+	chunk_size = 0;
 	if (size <= 100)
 		chunk_size = 25;
 	else
 		chunk_size = 60;
-	sort_push_b(lst_a, lst_b, chunk_size, conf);
-	sort_push_a(lst_a, lst_b, conf);
+	if (chunk_size != 0)
+	{		
+		sort_push_b(lst_a, lst_b, chunk_size, conf);
+		sort_push_a(lst_a, lst_b, conf);
+	}
 }

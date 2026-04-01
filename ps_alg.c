@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:05:15 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/28 16:31:37 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/01 21:58:09 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,16 @@ void	sort_three(t_ps_lst **lst_a, t_config *conf)
 		ps_rra(lst_a, conf);
 	if ((*lst_a)->index > (*lst_a)->next->index)
 		ps_sa(lst_a, conf);
+}
+
+void	sort_size(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size)
+{
+	if (size == 1)
+		return ;
+	else if (size == 2)
+		sort_two(a, conf, size);
+	else if (size == 3)
+		sort_three(a, conf);
+	else if (size == 5)
+		sort_five(a, b, conf);
 }

@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 00:58:08 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/23 23:16:10 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/29 20:37:44 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ps_rb(t_ps_lst **b, t_config *conf)
 	ps_lstadd_back(b, temp);
 	if (conf)
 		conf->rb++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "rb\n", 3);
 }
 
@@ -42,7 +42,7 @@ void	ps_rra(t_ps_lst **a, t_config *conf)
 	temp->next = NULL;
 	if (conf)
 		conf->rra++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "rra\n", 4);
 }
 
@@ -59,6 +59,6 @@ void	ps_rrb(t_ps_lst **b, t_config *conf)
 	temp->next = NULL;
 	if (conf)
 		conf->rrb++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "rrb\n", 4);
 }

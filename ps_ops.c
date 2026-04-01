@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 21:33:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/23 23:15:49 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/03/29 20:34:17 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ps_pa(t_ps_lst **a, t_ps_lst **b, t_config *conf)
 	ps_lstadd_front(a, temp);
 	if (conf)
 		conf->pa++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "pa\n", 3);
 }
 
@@ -41,7 +41,7 @@ void	ps_pb(t_ps_lst **a, t_ps_lst **b, t_config *conf)
 	ps_lstadd_front(b, temp);
 	if (conf)
 		conf->pb++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "pb\n", 3);
 }
 
@@ -60,7 +60,7 @@ void	ps_sa(t_ps_lst **a, t_config *conf)
 	(*a)->next->index = temp_index;
 	if (conf)
 		conf->sa++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "sa\n", 3);
 }
 
@@ -80,7 +80,7 @@ void	ps_sb(t_ps_lst **b, t_config *conf)
 	(*b)->next->index = temp_index;
 	if (conf)
 		conf->sb++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "sb\n", 3);
 }
 
@@ -96,6 +96,6 @@ void	ps_ra(t_ps_lst **a, t_config *conf)
 	ps_lstadd_back(a, temp);
 	if (conf)
 		conf->ra++;
-	if (conf && conf->is_checker == 0)
+	if (conf && (conf->is_checker == 0 && conf->not_write == 0))
 		write(1, "ra\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/28 16:29:51 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/01 21:56:13 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,18 @@ typedef struct ps_t_config
 	int		benchmark;
 	double	disorder;
 	int		is_checker;
+	int		not_write;
 	int		pb;
 	int		pa;
+	int		ss;
 	int		sa;
 	int		sb;
 	int		ra;
 	int		rb;
+	int		rr;
 	int		rra;
 	int		rrb;
+	int		rrr;
 }	t_config;
 
 # define ADAPTIVE 0
@@ -59,19 +63,25 @@ void		ps_lstclear(t_ps_lst **lst);
 void		ps_error(t_ps_lst **lsthead, char **arr);
 void		ps_parser(char *av, t_ps_lst **list);
 void		ps_flag(int ac, char **av, t_ps_lst **lst_a, t_config *conf);
+void		sort_size(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_three(t_ps_lst **a, t_config *conf);
 void		sort_simple(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_medium(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_complex(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
-void		sort_benchmark(t_config *conf, int total);
+void		sort_five(t_ps_lst **a, t_ps_lst **b, t_config *conf);
+void		sort_two(t_ps_lst **lst_a, t_config *conf, int size);
+void		sort_benchmark(t_config *conf);
 
 void		ps_pa(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 void		ps_pb(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 void		ps_sa(t_ps_lst **a, t_config *conf);
 void		ps_sb(t_ps_lst **b, t_config *conf);
+void		ps_ss(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 void		ps_ra(t_ps_lst **a, t_config *conf);
 void		ps_rb(t_ps_lst **b, t_config *conf);
+void		ps_rr(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 void		ps_rra(t_ps_lst **a, t_config *conf);
 void		ps_rrb(t_ps_lst **b, t_config *conf);
+void		ps_rrr(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 
 #endif

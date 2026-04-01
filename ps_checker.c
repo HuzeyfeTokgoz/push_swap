@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/15 01:31:33 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/28 16:28:58 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/01 21:52:41 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,22 @@ static int	is_sorted(t_ps_lst *lst_a)
 static void	target_checker(char *line, t_ps_lst **lst_a, t_ps_lst **lst_b,
 			t_config *conf)
 {
-	if (ft_strncmp(line, "pb\n", 2) == 0)
+	if (ft_strncmp(line, "pb", 2) == 0)
 		ps_pb(lst_a, lst_b, conf);
-	else if (ft_strncmp(line, "ra\n", 2) == 0)
+	else if (ft_strncmp(line, "ra", 2) == 0)
 		ps_ra(lst_a, conf);
-	else if (ft_strncmp(line, "rb\n", 2) == 0)
+	else if (ft_strncmp(line, "rb", 2) == 0)
 		ps_rb(lst_b, conf);
-	else if (ft_strncmp(line, "rra\n", 3) == 0)
+	else if (ft_strncmp(line, "rra", 3) == 0)
 		ps_rra(lst_a, conf);
-	else if (ft_strncmp(line, "rrb\n", 3) == 0)
+	else if (ft_strncmp(line, "rrb", 3) == 0)
 		ps_rrb(lst_b, conf);
+	else if (ft_strncmp(line, "rr", 2) == 0)
+		ps_rr(lst_a, lst_b, conf);
+	else if (ft_strncmp(line, "rrr", 3) == 0)
+		ps_rrr(lst_a, lst_b, conf);
+	else if (ft_strncmp(line, "ss", 2) == 0)
+		ps_ss(lst_a, lst_b, conf);
 	else
 	{
 		free(line);
@@ -55,11 +61,11 @@ static void	ps_checker(t_ps_lst **lst_a, t_ps_lst **lst_b, t_config *conf)
 	line = get_next_line(0);
 	while (line)
 	{
-		if (ft_strncmp(line, "sa\n", 2) == 0)
+		if (ft_strncmp(line, "sa", 2) == 0)
 			ps_sa(lst_a, conf);
-		else if (ft_strncmp(line, "sb\n", 2) == 0)
+		else if (ft_strncmp(line, "sb", 2) == 0)
 			ps_sb(lst_b, conf);
-		else if (ft_strncmp(line, "pa\n", 2) == 0)
+		else if (ft_strncmp(line, "pa", 2) == 0)
 			ps_pa(lst_a, lst_b, conf);
 		else
 			target_checker(line, lst_a, lst_b, conf);

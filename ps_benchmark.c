@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 15:56:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/03/25 23:36:13 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/01 21:10:12 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,17 @@ static void	print_bench_disorder(double disorder)
 	write(2, "%\n", 2);
 }
 
-void	sort_benchmark(t_config *conf, int total)
+static int	count_ops(t_config *conf)
 {
+	int	total;
+
 	total = conf->sa + conf->sb + conf->pa + conf->pb + conf->ra + conf->rb
-		+ conf->rra + conf->rrb;
-	print_bench_disorder(conf->disorder);
+		+ conf->rra + conf->rrb + conf->rr + conf->rrr + conf->ss;
+	return (total);
+}
+
+static void	print_bench_strategy(t_config *conf)
+{
 	write(2, "[bench] strategy: ", 18);
 	if (conf->algoritma == SIMPLE)
 		write(2, "Simple\n", 7);
@@ -51,8 +57,24 @@ void	sort_benchmark(t_config *conf, int total)
 		write(2, "Medium\n", 7);
 	else if (conf->algoritma == COMPLEX)
 		write(2, "Complex\n", 8);
-	else
-		write(2, "Adaptive\n", 9);
+	else if (conf->algoritma == ADAPTIVE)
+	{
+		if (conf->disorder < 0.2)
+			write(2, "Simple\n", 7);
+		else if (conf->disorder < 0.5)
+			write(2, "Medium\n", 7);
+		else if (conf->disorder >= 0.5)
+			write(2, "Complex\n", 8);
+	}
+}
+
+void	sort_benchmark(t_config *conf)
+{
+	int	total;
+
+	total = count_ops(conf);
+	print_bench_disorder(conf->disorder);
+	print_bench_strategy(conf);
 	print_bench_row("total_ops", total);
 	print_bench_row("sa", conf->sa);
 	print_bench_row("sb", conf->sb);
@@ -62,7 +84,7 @@ void	sort_benchmark(t_config *conf, int total)
 	print_bench_row("rb", conf->rb);
 	print_bench_row("rra", conf->rra);
 	print_bench_row("rrb", conf->rrb);
-	print_bench_row("rr", 0);
-	print_bench_row("rrr", 0);
-	print_bench_row("ss", 0);
+	print_bench_row("rr", conf->rr);
+	print_bench_row("rrr", conf->rrr);
+	print_bench_row("ss", conf->ss);
 }

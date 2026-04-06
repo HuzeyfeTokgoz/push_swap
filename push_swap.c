@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 22:58:27 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/04/01 21:47:11 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/06 19:04:17 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ps_router(t_ps_lst **lst_a, t_ps_lst **lst_b,
 	if (conf->disorder != 0.0)
 	{
 		if (size <= 5)
-			sort_size_simple(lst_a, lst_b, conf, size);
+			sort_size(lst_a, lst_b, conf, size);
 		else if (conf->algoritma == ADAPTIVE)
 		{
 			if (conf->disorder < 0.2)
@@ -74,13 +74,11 @@ int	main(int ac, char **av)
 	t_ps_lst	*lst_b;
 	t_config	conf;
 	int			size;
-	int			flags_done;
 
 	lst_a = NULL;
 	lst_b = NULL;
-	flags_done = 0;
 	ft_memset(&conf, 0, sizeof(t_config));
-	ps_flag(ac, av, &lst_a, &conf, flags_done);
+	ps_flag(ac, av, &lst_a, &conf);
 	if (!lst_a)
 	{
 		if (conf.benchmark == 1)

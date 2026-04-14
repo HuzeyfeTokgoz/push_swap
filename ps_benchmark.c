@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 15:56:49 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/04/06 20:45:58 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/15 00:14:37 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,26 @@ static int	count_ops(t_config *conf)
 	return (total);
 }
 
+static void	print_strategy(t_config *conf)
+{
+	if (conf->algoritma == SIMPLE)
+		write(2, "Simple / O(n2)\n", 15);
+	else if (conf->algoritma == MEDIUM)
+		write(2, "Medium / O(n*sqrt(n))\n", 22);
+	else if (conf->algoritma == COMPLEX)
+		write(2, "Complex / O(n log n)\n", 21);
+	else if (conf->algoritma == ADAPTIVE)
+	{
+		write(2, "Adaptive / ", 11);
+		if (conf->disorder < 0.2)
+			write(2, "O(n2)\n", 6);
+		else if (conf->disorder < 0.5)
+			write(2, "O(n*sqrt(n))\n", 13);
+		else
+			write(2, "O(n log n)\n", 11);
+	}
+}
+
 void	sort_benchmark(t_config *conf)
 {
 	int	total;
@@ -55,14 +75,7 @@ void	sort_benchmark(t_config *conf)
 	total = count_ops(conf);
 	print_bench_disorder(conf->disorder);
 	write(2, "[bench] strategy: ", 18);
-	if (conf->algoritma == SIMPLE)
-		write(2, "Simple\n", 7);
-	else if (conf->algoritma == MEDIUM)
-		write(2, "Medium\n", 7);
-	else if (conf->algoritma == COMPLEX)
-		write(2, "Complex\n", 8);
-	else if (conf->algoritma == ADAPTIVE)
-		write(2, "Adaptive\n", 9);
+	print_strategy(conf);
 	print_bench_row("total_ops", total);
 	print_bench_row("sa", conf->sa);
 	print_bench_row("sb", conf->sb);

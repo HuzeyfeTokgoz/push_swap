@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 20:18:15 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/04/01 21:57:58 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/14 22:06:38 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,6 @@ void	ps_ss(t_ps_lst **a, t_ps_lst **b, t_config *conf)
 	if (conf && conf->is_checker == 0)
 		write(1, "ss\n", 3);
 	conf->not_write = 0;
-}
-
-void	sort_two(t_ps_lst **lst_a, t_config *conf, int size)
-{
-	if (size == 2)
-	{
-		if ((*lst_a)->content > (*lst_a)->next->content)
-			ps_sa(lst_a, conf);
-	}
 }
 
 void	sort_five(t_ps_lst **a, t_ps_lst **b, t_config *conf)

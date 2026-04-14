@@ -6,7 +6,7 @@
 /*   By: hutokgoz <hutokgoz@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 23:29:45 by hutokgoz          #+#    #+#             */
-/*   Updated: 2026/04/01 21:56:13 by hutokgoz         ###   ########.fr       */
+/*   Updated: 2026/04/14 22:06:50 by hutokgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ void		sort_simple(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_medium(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_complex(t_ps_lst **a, t_ps_lst **b, t_config *conf, int size);
 void		sort_five(t_ps_lst **a, t_ps_lst **b, t_config *conf);
-void		sort_two(t_ps_lst **lst_a, t_config *conf, int size);
 void		sort_benchmark(t_config *conf);
-
 void		ps_pa(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 void		ps_pb(t_ps_lst **a, t_ps_lst **b, t_config *conf);
 void		ps_sa(t_ps_lst **a, t_config *conf);

@@ -56,7 +56,6 @@ int			lst_dup(t_ps_lst *lst, int a);
 int			is_numeric(char *num);
 int			ps_lstsize(t_ps_lst *lst);
 int			get_minmax_index(t_ps_lst *lst, int min_max);
-void		ps_parser(char *av, t_ps_lst **lsthead);
 void		ps_lstadd_back(t_ps_lst **lst, t_ps_lst *new);
 void		ps_lstadd_front(t_ps_lst **lst, t_ps_lst *new);
 void		ps_lstclear(t_ps_lst **lst);

@@ -115,7 +115,7 @@ void	sort_medium(t_ps_lst **lst_a, t_ps_lst **lst_b,
 	else
 		chunk_size = 60;
 	if (chunk_size != 0)
-	{		
+	{
 		sort_push_b(lst_a, lst_b, chunk_size, conf);
 		sort_push_a(lst_a, lst_b, conf);
 	}

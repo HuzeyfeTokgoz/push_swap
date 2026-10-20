@@ -16,7 +16,7 @@ void	ps_lstadd_back(t_ps_lst **lst, t_ps_lst *new)
 {
 	t_ps_lst	*last;
 
-	if (!lst && !new)
+	if (!lst || !new)
 		return ;
 	if (*lst == NULL)
 	{
